@@ -1,0 +1,75 @@
+body {
+  margin-left: 1%;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+#sort-container {
+  display: inline-block;
+}
+#action-button {
+  display: none;
+  /* padding-left: 93%; */
+}
+#info-line {
+  display: inline-block;
+  padding-right: 75%;
+}
+#main-element {
+  margin-left: 3%;
+  margin-right: 3%;
+}
+/* new line css from manu-------------------------------------------------- */
+/* Set the width for each column in the data-table */
+#data-table th:nth-child(1),
+#data-table td:nth-child(1) {
+  width: 5%; /* Adjust the percentage as needed */
+}
+
+#data-table th:nth-child(2),
+#data-table td:nth-child(2) {
+  width: 5%; /* Adjust the percentage as needed */
+}
+
+#data-table th:nth-child(3),
+#data-table td:nth-child(3) {
+  width: 10%; /* Adjust the percentage as needed */
+}
+
+#data-table th:nth-child(4),
+#data-table td:nth-child(4) {
+  width: 10%; /* Adjust the percentage as needed */
+}
+
+#data-table th:nth-child(5),
+#data-table td:nth-child(5) {
+  width: 20%; /* Adjust the percentage as needed */
+}
+
+#data-table th:nth-child(6),
+#data-table td:nth-child(6) {
+  width: 20%; /* Adjust the percentage as needed */
+}
+
+#data-table th:nth-child(7),
+#data-table td:nth-child(7) {
+  width: 15%; /* Adjust the percentage as needed */
+}
