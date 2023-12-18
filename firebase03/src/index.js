@@ -7,6 +7,7 @@ import {
   deleteDoc,
   doc,
   getDocs,
+  query,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -103,6 +104,34 @@ onSnapshot(colRef, (snapshot) => {
     populateTable(sortedUsers);
   });
 });
+// printing cities
+onSnapshot(citiesRef, (snapshot) => {
+  // clear old data
+  let cit_list = [];
+  snapshot.docs.forEach((doc) => {
+    // Extract data from each document
+    const { ID, country, name, time_zone } = doc.data();
+
+    // Add data to the books array
+    cit_list.push({ firestore_id: doc.id, ID, country, name, time_zone });
+  });
+  console.log("Cities:");
+  console.log(cit_list);
+});
+//printing organizations
+onSnapshot(organizationRef, (snapshot) => {
+  // clear old data
+  let org_list = [];
+  snapshot.docs.forEach((doc) => {
+    // Extract data from each document
+    const { name, ID, email, address } = doc.data();
+
+    // Add data to the books array
+    org_list.push({ firestore_id: doc.id, name, ID, email, address });
+  });
+  console.log(`Organizations: `);
+  console.log(org_list);
+});
 
 const itemsPerPage = 10;
 let currentPage = 1;
@@ -130,7 +159,6 @@ prevButton.addEventListener("click", () => {
 
 // Update the populateTable function to display items based on the current page
 // startIdx and endIdx declared in higher scope for sorting
-
 function populateTable(users) {
   const tableBody = document.getElementById("data-table-body");
   startIdx = (currentPage - 1) * itemsPerPage;
@@ -172,6 +200,7 @@ function populateTable(users) {
   prevButton.style.display = currentPage > 1 ? "inline-block" : "none";
   nextButton.style.display = currentPage < totalPages ? "inline-block" : "none";
 }
+
 // Function to update the information line
 function updateInfoLine(startSerial, endSerial, totalDocuments) {
   const infoLine = document.getElementById("info-line");
@@ -230,7 +259,6 @@ tableBody.addEventListener("change", () => {
   actionButton.style.display = anyCheckboxSelected ? "inline-block" : "none";
 });
 
-// Function to delete a user from both the table and Firestore
 function deleteUser(id) {
   // Find the user in the users array based on the id
   const userToDelete = users.find((user) => user.ID === id);
