@@ -1,6 +1,15 @@
 body {
   margin-left: 1%;
 }
+h1 {
+  background-color: bisque;
+  color: brown;
+}
+
+th {
+  color: brown;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
