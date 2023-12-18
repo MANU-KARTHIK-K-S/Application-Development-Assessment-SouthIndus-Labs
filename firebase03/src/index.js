@@ -191,6 +191,16 @@ function sortUsers(sortOrder, startIndex, endIndex) {
   } else if (sortOrder === "desc") {
     sortedUsers.sort((a, b) => b.name.localeCompare(a.name));
   }
+  if (sortOrder === "casc") {
+    sortedUsers.sort((a, b) => a.city.localeCompare(b.city));
+  } else if (sortOrder === "cdesc") {
+    sortedUsers.sort((a, b) => b.city.localeCompare(a.city));
+  }
+  if (sortOrder === "oasc") {
+    sortedUsers.sort((a, b) => a.organization.localeCompare(b.organization));
+  } else if (sortOrder === "odesc") {
+    sortedUsers.sort((a, b) => b.organization.localeCompare(a.organization));
+  }
 
   // Replace the sorted subset in the original array
   users.splice(startIndex, sortedUsers.length, ...sortedUsers);
