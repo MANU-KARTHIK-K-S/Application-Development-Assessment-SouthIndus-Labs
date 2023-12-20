@@ -1,6 +1,12 @@
 body {
   margin-left: 1%;
 }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
 h1 {
   background-color: bisque;
   color: brown;
@@ -8,11 +14,6 @@ h1 {
 
 th {
   color: brown;
-}
-
-table {
-  border-collapse: collapse;
-  width: 100%;
 }
 
 table,
@@ -34,19 +35,26 @@ th {
 #sort-container {
   display: inline-block;
 }
-#action-button {
+
+#action-button,
+#clearserach {
   display: none;
-  /* padding-left: 93%; */
 }
-#info-line {
+
+#info-line,
+#search-user {
   display: inline-block;
-  padding-right: 75%;
+  margin-right: 10px;
 }
+#search-user {
+  margin-right: 60%;
+}
+
 #main-element {
   margin-left: 3%;
   margin-right: 3%;
 }
-/* new line css from manu-------------------------------------------------- */
+
 /* Set the width for each column in the data-table */
 #data-table th:nth-child(1),
 #data-table td:nth-child(1) {
