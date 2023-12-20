@@ -8,6 +8,7 @@ import {
   doc,
   getDocs,
   query,
+  where,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -311,4 +312,50 @@ actionButton.addEventListener("click", () => {
       row.querySelector('input[name="selectRow"]').checked = false;
     });
   }
+});
+// --------------------------------------------------
+// Event listener for the search button
+const searchButton = document.getElementById("searchbtn");
+searchButton.addEventListener("click", async () => {
+  const searchInput = document.querySelector('input[name="searchuser"]').value;
+
+  try {
+    // Query Firestore to get documents that match the search input
+    const querySnapshot = await getDocs(
+      query(colRef, where("name", "==", searchInput))
+    );
+
+    // Extract data from the query snapshot
+    const searchResults = querySnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    if (searchResults.length > 0) {
+      // Populate the table with the search results
+      populateTable(searchResults);
+      // Update the information line
+      const totalItems = searchResults.length;
+      updateInfoLine(1, totalItems, totalItems);
+
+      // Hide pagination buttons since search results are displayed in one page
+      const prevButton = document.getElementById("prevbtn");
+      const nextButton = document.getElementById("nextbtn");
+      const clrsearch = document.getElementById("clearserach");
+      prevButton.style.display = "none";
+      nextButton.style.display = "none";
+      clrsearch.style.display = "inline-block";
+    } else {
+      alert("No users found!\nNote: Search is Case Sensitive ");
+    }
+  } catch (error) {
+    console.error("Error fetching search results:", error.message);
+  }
+});
+const clrbtn = document.getElementById("clearserach");
+clrbtn.addEventListener("click", () => {
+  const clrsearch = document.getElementById("clearserach");
+  populateTable(sortUsers("asc", startIdx, endIdx));
+  searchInput.value = "";
+  clrsearch.style.display = "none";
 });
