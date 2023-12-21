@@ -320,17 +320,10 @@ searchButton.addEventListener("click", async () => {
   const searchInput = document.querySelector('input[name="searchuser"]').value;
 
   try {
-    // Query Firestore to get documents that match the search input
-    const querySnapshot = await getDocs(
-      query(colRef, where("name", "==", searchInput))
-    );
-
-    // Extract data from the query snapshot
-    const searchResults = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
-
+     // Filter the users array based on the search input
+  const searchResults = users.filter(user =>
+    user.name.toLowerCase().includes(searchInput)
+  );
     if (searchResults.length > 0) {
       // Populate the table with the search results
       populateTable(searchResults);
@@ -346,7 +339,7 @@ searchButton.addEventListener("click", async () => {
       nextButton.style.display = "none";
       clrsearch.style.display = "inline-block";
     } else {
-      alert("No users found!\nNote: Search is Case Sensitive ");
+      alert("No users found! ");
     }
   } catch (error) {
     console.error("Error fetching search results:", error.message);
