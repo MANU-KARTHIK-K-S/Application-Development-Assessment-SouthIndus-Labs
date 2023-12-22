@@ -10,6 +10,8 @@ table {
 h1 {
   background-color: bisque;
   color: brown;
+  border-left: 10px solid brown;
+  padding-left: 15px;
 }
 
 th {
