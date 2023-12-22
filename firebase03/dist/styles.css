@@ -92,3 +92,6 @@ th {
 #data-table td:nth-child(7) {
   width: 15%; /* Adjust the percentage as needed */
 }
+button {
+  cursor: pointer;
+}
