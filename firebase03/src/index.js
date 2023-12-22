@@ -319,7 +319,6 @@ const searchButton = document.getElementById("searchbtn");
 searchButton.addEventListener("click", async () => {
   const searchInput = document.querySelector('input[name="searchuser"]').value;
 
-  try {
      // Filter the users array based on the search input
   const searchResults = users.filter(user =>
     user.name.toLowerCase().includes(searchInput)
@@ -341,9 +340,6 @@ searchButton.addEventListener("click", async () => {
     } else {
       alert("No users found! ");
     }
-  } catch (error) {
-    console.error("Error fetching search results:", error.message);
-  }
 });
 const clrbtn = document.getElementById("clearserach");
 clrbtn.addEventListener("click", () => {
