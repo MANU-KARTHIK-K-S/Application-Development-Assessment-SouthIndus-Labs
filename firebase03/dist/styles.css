@@ -95,3 +95,7 @@ th {
 button {
   cursor: pointer;
 }
+input:focus {
+  color: brown;
+  background-color: bisque;
+}
