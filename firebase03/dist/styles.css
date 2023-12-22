@@ -99,3 +99,6 @@ input:focus {
   color: brown;
   background-color: bisque;
 }
+tr:hover {
+  background-color: bisque;
+}
