@@ -255,7 +255,7 @@ tableBody.addEventListener("change", () => {
   const anyCheckboxSelected = Array.from(checkboxes).some(
     (checkbox) => checkbox.checked
   );
-
+  handleCheckboxChange();
   // Update button visibility
   actionButton.style.display = anyCheckboxSelected ? "inline-block" : "none";
 });
@@ -348,3 +348,22 @@ clrbtn.addEventListener("click", () => {
   searchInput.value = "";
   clrsearch.style.display = "none";
 });
+// Function to handle checkbox change event
+function handleCheckboxChange() {
+  const checkboxes = document.querySelectorAll('input[name="selectRow"]');
+  checkboxes.forEach((checkbox, index) => {
+    const row = checkbox.closest("tr");
+
+    // Check if the checkbox is checked
+    if (checkbox.checked) {
+      // Change the background color of the row when checked
+      row.style.backgroundColor = "lightgrey";
+      row.style.color = "red";
+    } else {
+      // Reset the background color when unchecked
+      // You can set it to the default color or leave it empty for no background color
+      row.style.backgroundColor = "";
+      row.style.color = "";
+    }
+  });
+}
